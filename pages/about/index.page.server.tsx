@@ -10,4 +10,8 @@ export async function onBeforeRender(pageContext) {
   }
 }
 
+export const documentProps = {
+  title: 'About'
+}
+
 export const passToClient = ['pageProps']
