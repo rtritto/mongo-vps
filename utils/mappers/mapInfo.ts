@@ -1,4 +1,4 @@
-import { bytesToSize, convertBytes } from './mapUtils.ts'
+import { bytesToSize, convertBytes } from './mapUtils'
 
 const EMPTY_COLLECTION_SIZE = 4096
 

@@ -1,6 +1,6 @@
 // https://vite-plugin-ssr.com/data-fetching
 
-import { mapServerStatus } from '../../utils/mappers/mapInfo.ts'
+import { mapServerStatus } from '../../utils/mappers/mapInfo'
 
 async function onBeforeRender(pageContext) {
   const { config, mongo } = global

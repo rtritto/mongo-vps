@@ -1,8 +1,8 @@
 import { Box, Container, Divider, Typography } from '@suid/material'
 import type { Component } from 'solid-js'
 
-import type { mapServerStatus } from '../../utils/mappers/mapInfo.ts'
-import StatsTable from '../../components/StatsTable.tsx'
+import type { mapServerStatus } from '../../utils/mappers/mapInfo'
+import StatsTable from '../../components/StatsTable'
 
 const Page: Component<{
   databases: Mongo['databases']
