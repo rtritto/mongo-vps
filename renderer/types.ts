@@ -7,9 +7,7 @@ type Page = Component<PageProps>
 
 export type PageContext = PageContextBuiltIn<Page> & {
   pageProps: PageProps
-  exports: {
-    documentProps: {
-      title: string
-    }
+  config: {
+    title: string
   }
 }

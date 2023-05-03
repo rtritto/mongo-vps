@@ -2,7 +2,7 @@
 
 import { mapServerStatus } from '../../utils/mappers/mapInfo.ts'
 
-export async function onBeforeRender(pageContext) {
+async function onBeforeRender(pageContext) {
   const { config, mongo } = global
   return {
     pageContext: {
@@ -17,8 +17,4 @@ export async function onBeforeRender(pageContext) {
   }
 }
 
-export const documentProps = {
-  title: 'Home - Mongo Express'
-}
-
-export const passToClient = ['pageProps']
+export default onBeforeRender

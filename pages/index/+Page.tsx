@@ -49,4 +49,4 @@ const Page: Component<{
     )
   }
 
-export { Page }
+export default Page

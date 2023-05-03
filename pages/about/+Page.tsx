@@ -16,4 +16,4 @@ const Page: Component = (pageProps) => {
   )
 }
 
-export { Page }
+export default Page

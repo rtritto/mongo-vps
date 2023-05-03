@@ -1,20 +1,20 @@
+// https://vite-plugin-ssr.com/onRenderHtml
+
 import { generateHydrationScript, renderToStream } from 'solid-js/web'
 import { escapeInject, dangerouslySkipEscape, stampPipe } from 'vite-plugin-ssr/server'
 
 import { PageLayout } from './PageLayout'
 import type { PageContext } from './types'
 
-// See https://vite-plugin-ssr.com/data-fetching
-const passToClient = ['pageProps', 'documentProps']
-
-function render(pageContext: PageContext) {
+function onRenderHtml(pageContext: PageContext) {
   const { pipe } = renderToStream(() => <PageLayout pageContext={pageContext} />)
   stampPipe(pipe, 'node-stream')
 
+  // Config values are available at pageContext.config
   // See:
   //  - https://vite-plugin-ssr.com/head
   //  - https://vite-plugin-ssr.com/markdown
-  const { title } = pageContext.exports.documentProps
+  const { title } = pageContext.config
 
   return escapeInject`<!DOCTYPE html>
     <html lang="en">
@@ -31,7 +31,4 @@ function render(pageContext: PageContext) {
     </html>`
 }
 
-export {
-  passToClient,
-  render
-}
+export default onRenderHtml
