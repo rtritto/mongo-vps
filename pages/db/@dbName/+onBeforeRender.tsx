@@ -1,7 +1,7 @@
 // https://vite-plugin-ssr.com/onBeforeRender
 
-import { PageContext } from '../../renderer/types'
-import { isValidDatabaseName } from '../../utils/validations'
+import { PageContext } from '../../../renderer/types'
+import { isValidDatabaseName } from '../../../utils/validations'
 
 async function onBeforeRender(pageContext: PageContext) {
   const { dbName } = pageContext.routeParams
