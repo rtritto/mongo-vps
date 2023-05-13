@@ -1,13 +1,14 @@
 import type { Component } from 'solid-js'
 
-import './code.css'
-
-const Page: Component = () => {
+const Page: Component<{
+  dbName: string
+}> = (props) => {
   return (
     <>
-      {/* <h1>Conn {props.conn}</h1> */}
 
-      <h1>About</h1>
+      <h1>TEST</h1>
+
+      {props.dbName}
 
       <p>
         Demo using <code>vite-plugin-ssr</code> with Solid.

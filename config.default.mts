@@ -19,7 +19,7 @@ const getMongo = () => /* process.env.VCAP_SERVICES ? getBlueMixConfig() : */({
 })
 
 function getFile(filePath: string | undefined) {
-  if (typeof filePath !== 'undefined' && filePath) {
+  if (filePath !== undefined && filePath) {
     try {
       if (fs.existsSync(filePath)) {
         return fs.readFileSync(filePath)

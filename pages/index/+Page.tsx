@@ -1,8 +1,12 @@
 import { Box, Container, Divider, Typography } from '@suid/material'
-import type { Component } from 'solid-js'
+import { type Component, Show, createEffect } from 'solid-js'
+import { useAtom } from 'solid-jotai'
+import { useHydrateAtoms } from 'solid-jotai/utils'
 
 import type { mapServerStatus } from '../../utils/mappers/mapInfo'
-import StatsTable from '../../components/StatsTable'
+import StatsTable from '../../components/common/StatsTable'
+import ShowDatabases from './ShowDatabases'
+import { databasesState, messageErrorState, messageSuccessState } from '../../components/store/globalAtoms'
 
 const Page: Component<{
   databases: Mongo['databases']
@@ -13,40 +17,42 @@ const Page: Component<{
     readOnly: boolean
   }
   serverStatus?: ReturnType<typeof mapServerStatus>
-}> = ({
-  options: {
-    noDelete,
-    readOnly
-  },
-  databases,
-  serverStatus
-}) => {
-    // pageProps.options
-    return (
-      <Container sx={{ p: 1 }}>
-        <Typography component="h4" gutterBottom variant="h4">Mongo Express</Typography>
+}> = (props) => {
+  useHydrateAtoms([[databasesState, props.databases]] as const)
+  const [databases, setDatabases] = useAtom(databasesState)
 
-        <Divider sx={{ border: 1, my: 1.5 }} />
+  createEffect(() => {
+    setDatabases(props.databases)
+  })
 
-        {/* <ShowDatabases
-        databases={databases}
+  return (
+    <Container sx={{ p: 1 }}>
+      <Typography component="h4" gutterBottom variant="h4">Mongo Express</Typography>
+
+      <Divider sx={{ border: 1, my: 1.5 }} />
+
+      <ShowDatabases
+        databases={databases()}
         show={{
-          create: readOnly === false,
-          delete: noDelete === false && readOnly === false
+          create: props.options.readOnly === false,
+          delete: props.options.noDelete === false && props.options.readOnly === false
         }}
-      /> */}
+      />
 
-        <Box sx={{ mb: 2 }}>
-          {serverStatus ? <StatsTable label="Server Status" fields={serverStatus} /> : (
-            <>
-              <Typography component="h4" gutterBottom variant="h4">Server Status</Typography>
+      <Box sx={{ mb: 2 }}>
+        <Show
+          when={props.serverStatus}
+          fallback={<>
+            <Typography component="h4" gutterBottom variant="h4">Server Status</Typography>
 
-              <Typography>Turn on admin in <b>config.js</b> to view server stats!</Typography>
-            </>
-          )}
-        </Box>
-      </Container>
-    )
-  }
+            <Typography>Turn on admin in <b>config.js</b> to view server stats!</Typography>
+          </>}
+        >
+          <StatsTable label="Server Status" fields={props.serverStatus} />
+        </Show>
+      </Box>
+    </Container>
+  )
+}
 
 export default Page

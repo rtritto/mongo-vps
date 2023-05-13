@@ -1,4 +1,4 @@
-// https://vite-plugin-ssr.com/onRenderClient
+// Client https://vite-plugin-ssr.com/onRenderClient
 
 import { createStore, reconcile } from 'solid-js/store'
 import { hydrate, render } from 'solid-js/web'
@@ -19,17 +19,16 @@ async function onRenderClient(pageContext: PageContextClient) {
     document.title = pageContext.config.title
     setPageContext(reconcile(pageContext))
   } else {
-    // Dispose to prevent duplicate pages when navigating.
+    // Dispose to prevent duplicate pages when navigating
     if (dispose) dispose()
 
     setPageContext(pageContext)
 
-    const container = document.getElementById('page-view')!
-    if (pageContext.isHydration) {
-      dispose = hydrate(() => <PageLayout pageContext={pageContextStore} />, container)
-    } else {
-      dispose = render(() => <PageLayout pageContext={pageContextStore} />, container)
-    }
+    const container = document.querySelector('#page-view')!
+    dispose = pageContext.isHydration
+      ? hydrate(() => <PageLayout pageContext={pageContextStore} />, container)
+      : render(() => <PageLayout pageContext={pageContextStore} />, container)
+
     rendered = true
   }
 }

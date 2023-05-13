@@ -1,13 +1,14 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@suid/material'
+import { Component } from 'solid-js'
 
 const getRowsComponent = (fields: Fields) => {
   const outRaw = []
   for (const cell in fields) {
     outRaw.push([
-      <TableCell key={`cellName${cell}`}>
+      <TableCell>
         <strong>{fields[cell].label}</strong>
       </TableCell>,
-      <TableCell key={`cellValue${cell}`} id={cell}>
+      <TableCell>
         {fields[cell].value}
       </TableCell>
     ])
@@ -21,7 +22,7 @@ const getRowsComponent = (fields: Fields) => {
       tableRow.push(...outRaw[index + 1])
     }
     out.push(
-      <TableRow key={`row${index}`}>
+      <TableRow>
         {tableRow}
       </TableRow>
     )
@@ -29,12 +30,7 @@ const getRowsComponent = (fields: Fields) => {
   return out
 }
 
-interface StatsTableProps {
-  label: string
-  fields: Fields
-}
-
-const StatsTable = ({ label, fields }: StatsTableProps) => {
+const StatsTable: Component<{ label: string, fields: Fields }> = (props) => {
   return (
     <TableContainer component={Paper}>
       <Table size="small">
@@ -42,14 +38,14 @@ const StatsTable = ({ label, fields }: StatsTableProps) => {
           <TableRow>
             <TableCell colSpan={4}>
               <Typography component='h6' variant='h6' sx={{ fontWeight: 'bold', pt: 0.5 }}>
-                {label}
+                {props.label}
               </Typography>
             </TableCell>
           </TableRow>
         </TableHead>
 
         <TableBody>
-          {getRowsComponent(fields)}
+          {getRowsComponent(props.fields)}
         </TableBody>
       </Table>
     </TableContainer>

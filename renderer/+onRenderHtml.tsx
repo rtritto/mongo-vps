@@ -1,4 +1,4 @@
-// https://vite-plugin-ssr.com/onRenderHtml
+// Server https://vite-plugin-ssr.com/onRenderHtml
 
 import { generateHydrationScript, renderToStream } from 'solid-js/web'
 import { escapeInject, dangerouslySkipEscape, stampPipe } from 'vite-plugin-ssr/server'
