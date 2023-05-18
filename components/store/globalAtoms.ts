@@ -5,8 +5,12 @@ export const collectionsState = atom<Mongo['collections']>({})
 export const columnsState = atom<MongoDocument[]>([])
 export const documentsState = atom<MongoDocument[]>([])
 export const documentCountState = atom<number>(0)
-export const selectedDatabaseState = atom<string>('')
-export const selectedCollectionState = atom<string>('')
+// eslint-disable-next-line unicorn/no-useless-undefined
+export const selectedDatabaseState = atom<string | undefined>(undefined)
+// eslint-disable-next-line unicorn/no-useless-undefined
+export const selectedCollectionState = atom<string | undefined>(undefined)
 export const databaseStatsState = atom<object>({})  /* TODO type */
-export const messageSuccessState = atom<string>('')
-export const messageErrorState = atom<string>('')
+// eslint-disable-next-line unicorn/no-useless-undefined
+export const messageSuccessState = atom<string | undefined>(undefined)
+// eslint-disable-next-line unicorn/no-useless-undefined
+export const messageErrorState = atom<string | undefined>(undefined)
