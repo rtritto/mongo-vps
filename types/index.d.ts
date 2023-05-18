@@ -20,7 +20,7 @@ type MongoDb = import('./../config.default.mts').MongoDb
 
 type PrimitiveTypes = boolean | string | number
 
-type CustomApiError = (any | Error) & {
+type CustomApiError = (unknown | Error) & {
   message: string
   status: number
 }
