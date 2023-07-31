@@ -4,6 +4,7 @@ import type { PageContextBuiltIn } from 'vite-plugin-ssr/types'
 export type PageProps = {
   dbName?: string
   collectionName?: string
+  databases: Mongo['databases']
 }
 
 type Page = Component<PageProps>

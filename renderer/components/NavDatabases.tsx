@@ -6,6 +6,7 @@ import { databasesState, selectedDatabaseState } from '../../components/store/gl
 
 const NavDatabases = () => {
   const databases = useAtomValue(databasesState)
+  console.log('NavDatabases.databases: ', databases());
   return (
     <>
       {Object.keys(databases()).length > 0 && (

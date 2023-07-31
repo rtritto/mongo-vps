@@ -7,6 +7,9 @@ import { PageLayout } from './PageLayout'
 import type { PageContext } from './types'
 
 function onRenderHtml(pageContext: PageContext) {
+  // pageContext.pageProps.databases = global.mongo.databases
+  // console.log('databases:onRenderHtml ', global.mongo.databases);
+  // console.log('pageContext.routeParams.onRenderHtml: ', pageContext.routeParams);
   const { pipe } = renderToStream(() => <PageLayout pageContext={pageContext} />)
   stampPipe(pipe, 'node-stream')
 
@@ -16,7 +19,7 @@ function onRenderHtml(pageContext: PageContext) {
   //  - https://vite-plugin-ssr.com/markdown
   const { title } = pageContext.config
 
-  return escapeInject`<!DOCTYPE html>
+  const documentHtml = escapeInject`<!DOCTYPE html>
     <html lang="en">
       <head>
         <meta charset="UTF-8" />
@@ -29,6 +32,15 @@ function onRenderHtml(pageContext: PageContext) {
         <div id="page-view">${pipe}</div>
       </body>
     </html>`
+
+  return {
+    documentHtml,
+    pageContext: {
+      pageProps: {
+        databases: global.mongo.databases
+      }
+    }
+  }
 }
 
 export default onRenderHtml

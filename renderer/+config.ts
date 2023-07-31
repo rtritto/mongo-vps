@@ -14,6 +14,7 @@ export default {
   passToClient: [
     // 'documentProps',
     'pageProps',
-    'title'
+    'title',
+    'databases'
   ]
 } satisfies Config

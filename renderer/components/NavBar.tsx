@@ -3,21 +3,27 @@ import {
   // Hidden,  // TODO
   List, Typography, Toolbar, Breadcrumbs
 } from '@suid/material'
-import type { Component } from 'solid-js'
+import { useAtomValue } from 'solid-jotai'
+import { Component, Show } from 'solid-js'
 
 // import { darkModeState } from 'src/store/Theme/atoms'
 import Link from './Link'
 import NavCollections from './NavCollections'
 import NavDatabases from './NavDatabases'
+import { selectedCollectionState, selectedDatabaseState } from '../../components/store/globalAtoms'
 
 const NavBar: Component<{
   // collections: Mongo['collections']
   // databases: Mongo['databases']
-  show: {
-    databases: boolean
-    collections: boolean
-  }
-}> = (props) => {
+  // show: {
+  //   databases: boolean
+  //   collections: boolean
+  // }
+}> = () => {
+  const selectedDatabase = useAtomValue(selectedDatabaseState)
+  console.log('selectedDatabase: ', selectedDatabase() !== undefined);
+  const selectedCollection = useAtomValue(selectedCollectionState)
+  console.log('selectedCollection: ', selectedCollection() !== undefined);
   return (
     <AppBar position="relative">
       <Container>
@@ -65,9 +71,13 @@ const NavBar: Component<{
             </Typography>
 
             <Breadcrumbs aria-label="breadcrumb" separator=">" >
-              {props.show.databases === true && <NavDatabases />}
+              <Show when={selectedDatabase() !== undefined}>
+                <NavDatabases />
+              </Show>
 
-              {props.show.collections === true && <NavCollections />}
+              <Show when={selectedCollection() !== undefined}>
+                <NavCollections />
+              </Show>
             </Breadcrumbs>
           </List>
         </Toolbar>

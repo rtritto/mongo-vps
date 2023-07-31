@@ -10,7 +10,7 @@ const SelectLink: Component<{
   baseUrl: string
   entities: string[]
   label: string
-  selectedState: PrimitiveAtom<string>
+  selectedState: PrimitiveAtom<string | undefined>
 }> = (props) => {
   const [selected, setSelected] = useAtom(props.selectedState)
 

@@ -17,8 +17,10 @@ const [pageContextStore, setPageContext] = createStore<PageContextClient>({} as 
 async function onRenderClient(pageContext: PageContextClient) {
   if (rendered === true) {
     document.title = pageContext.config.title
+    // console.log('1 pageContext.pageProps.databases: ', pageContext.pageProps.databases);
     setPageContext(reconcile(pageContext))
   } else {
+    // console.log('2 pageContext.pageProps.databases: ', pageContext.pageProps.databases);
     // Dispose to prevent duplicate pages when navigating
     if (dispose) dispose()
 

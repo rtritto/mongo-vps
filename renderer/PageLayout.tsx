@@ -2,15 +2,15 @@
 import type { JSX, Component } from 'solid-js'
 import type { Store } from 'solid-js/store'
 import { Dynamic } from 'solid-js/web'
+import { useSetAtom, Provider, createStore, useStore } from 'solid-jotai'
 
-import Link from './Link'
+import Link from './components/Link'
 import type { PageContext } from './types'
 import { PageContextProvider, usePageContext } from './usePageContext'
 import './PageLayout.css'
+import NavBar from './components/NavBar'
+import { databasesState, selectedCollectionState, selectedDatabaseState } from '../components/store/globalAtoms'
 
-interface Props {
-  pageContext: Store<PageContext>
-}
 interface Children {
   children: JSX.Element
 }
@@ -85,20 +85,42 @@ function Page() {
   )
 }
 
-const PageLayout: Component<Props> = (props) => {
+const store = createStore()
+const PageLayout: Component<{
+  pageContext: Store<PageContext>
+  // databases: Mongo['databases']
+}> = (props) => {
+  const { dbName, collectionName, databases } = props.pageContext.pageProps
+  // const { databases } = props.pageContext
+  // const store = useStore()
+  console.log('PageLayout.databases: ', databases);
+  // console.log('props.databases: ', databases);
+  if (databases) {
+    store.set(databasesState, databases)
+  }
+  store.set(selectedCollectionState, collectionName)
+  store.set(selectedDatabaseState, dbName)
   return (
-    <PageContextProvider pageContext={props.pageContext}>
-      <Layout>
-        <Sidebar>
-          <Logo />
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-        </Sidebar>
-        <Content>
-          <Page />
-        </Content>
-      </Layout>
-    </PageContextProvider>
+    <Provider store={store}>
+      <PageContextProvider pageContext={props.pageContext}>
+        <NavBar
+        // show={{
+        //   databases: dbName !== undefined,
+        //   collections: collectionName !== undefined
+        // }}
+        />
+        {/* <Layout> */}
+        {/* <Sidebar> */}
+        {/* <Logo /> */}
+        {/* <Link href="/">Home</Link> */}
+        {/* <Link href="/about">About</Link> */}
+        {/* </Sidebar> */}
+        {/* <Content> */}
+        <Page />
+        {/* </Content> */}
+        {/* </Layout> */}
+      </PageContextProvider>
+    </Provider>
   )
 }
 
