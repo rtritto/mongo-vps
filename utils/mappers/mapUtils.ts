@@ -1,4 +1,4 @@
-import { Binary, ObjectId } from 'bson'
+import { Binary, ObjectId } from 'mongodb'
 
 const ALLOWED_SUBTYPES = new Set([
   Binary.SUBTYPE_UUID_OLD,

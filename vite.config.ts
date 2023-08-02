@@ -22,7 +22,7 @@ export default defineConfig(async ({ mode }) => {
     plugins: [
       // VitePWA({ registerType: 'autoUpdate' }),
       suid(),
-      solid({ ssr: true }),
+      solid({ ssr: true }),  // TODO https://github.com/swordev/suid/issues/139
       ssr()
     ]
   }

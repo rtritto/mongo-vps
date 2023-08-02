@@ -1,7 +1,9 @@
-import { Document, EJSON, ObjectId } from 'bson'
+import { BSON, Document, ObjectId } from 'mongodb'
 import parser, { toJSString } from 'mongodb-query-parser'
 
 export const toBSON = parser
+
+const { EJSON } = BSON
 
 // This function as the name suggests attempts to parse
 // the free form string in to BSON, since the possibilities of failure
