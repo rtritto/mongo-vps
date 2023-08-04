@@ -1,8 +1,8 @@
 import { FormControl, Select } from '@suid/material'
 import type { SelectChangeEvent } from '@suid/material/Select'
+import type { PrimitiveAtom } from 'jotai'
 import { useAtom } from 'solid-jotai'
 import { type Component, For, type JSXElement } from 'solid-js'
-import type { PrimitiveAtom } from 'jotai'
 
 import CustomLink from './CustomLink'
 
@@ -45,8 +45,8 @@ const SelectLink: Component<{
           {props.label}:
         </CustomLink>
       )}
-
-      <Select
+      {JSON.stringify(props.entities)}
+      {/* <Select
         id={`select${props.label}`}
         displayEmpty
         renderValue={(value: string): JSXElement =>
@@ -99,7 +99,7 @@ const SelectLink: Component<{
             </CustomLink>
           )}
         </For>
-      </Select>
+      </Select> */}
     </FormControl>
   )
 }

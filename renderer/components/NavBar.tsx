@@ -71,11 +71,9 @@ const NavBar: Component<{
             </Typography>
 
             <Breadcrumbs aria-label="breadcrumb" separator=">" >
-              <Show when={selectedDatabase() !== undefined}>
-                <NavDatabases />
-              </Show>
+              <NavDatabases />
 
-              <Show when={selectedCollection() !== undefined}>
+              <Show when={selectedDatabase()}>
                 <NavCollections />
               </Show>
             </Breadcrumbs>

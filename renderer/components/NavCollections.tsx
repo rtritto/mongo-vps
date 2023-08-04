@@ -9,16 +9,12 @@ const NavCollections = () => {
   const selectedDb = useAtomValue(selectedDatabaseState)
 
   return (
-    <>
-      {collections()[selectedDb()]?.length > 0 && (
-        <SelectLink
-          baseUrl={EP_DATABASE(selectedDb())}
-          entities={collections()[selectedDb()]}
-          label="Collection"
-          selectedState={selectedCollectionState}
-        />
-      )}
-    </>
+    <SelectLink
+      baseUrl={EP_DATABASE(selectedDb())}
+      entities={collections()[selectedDb()]}
+      label="Collection"
+      selectedState={selectedCollectionState}
+    />
   )
 }
 

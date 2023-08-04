@@ -109,16 +109,16 @@ const PageLayout: Component<{
         //   collections: collectionName !== undefined
         // }}
         />
-        {/* <Layout> */}
-        {/* <Sidebar> */}
-        {/* <Logo /> */}
-        {/* <Link href="/">Home</Link> */}
-        {/* <Link href="/about">About</Link> */}
-        {/* </Sidebar> */}
-        {/* <Content> */}
-        <Page />
-        {/* </Content> */}
-        {/* </Layout> */}
+        <Layout>
+          {/* <Sidebar> */}
+          {/* <Logo /> */}
+          {/* <Link href="/">Home</Link> */}
+          {/* <Link href="/about">About</Link> */}
+          {/* </Sidebar> */}
+          <Content>
+            <Page />
+          </Content>
+        </Layout>
       </PageContextProvider>
     </Provider>
   )
