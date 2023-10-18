@@ -1,7 +1,7 @@
-// Server https://vite-plugin-ssr.com/onRenderHtml
+// Server https://vike.dev/onRenderHtml
 
 import { generateHydrationScript, renderToStream } from 'solid-js/web'
-import { escapeInject, dangerouslySkipEscape, stampPipe } from 'vite-plugin-ssr/server'
+import { escapeInject, dangerouslySkipEscape, stampPipe } from 'vike/server'
 
 import { PageLayout } from './PageLayout'
 import type { PageContext } from './types'
@@ -15,8 +15,8 @@ function onRenderHtml(pageContext: PageContext) {
 
   // Config values are available at pageContext.config
   // See:
-  //  - https://vite-plugin-ssr.com/head
-  //  - https://vite-plugin-ssr.com/markdown
+  //  - https://vike.dev/head
+  //  - https://vike.dev/markdown
   const { title } = pageContext.config
 
   const documentHtml = escapeInject`<!DOCTYPE html>

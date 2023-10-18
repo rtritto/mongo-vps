@@ -1,4 +1,4 @@
-// https://vite-plugin-ssr.com/onBeforeRender
+// https://vike.dev/onBeforeRender
 
 import { mapServerStatus } from '../../utils/mappers/mapInfo'
 

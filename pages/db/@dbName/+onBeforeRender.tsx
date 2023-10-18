@@ -1,4 +1,4 @@
-// https://vite-plugin-ssr.com/onBeforeRender
+// https://vike.dev/onBeforeRender
 
 import { PageContext } from '../../../renderer/types'
 import { isValidDatabaseName } from '../../../utils/validations'

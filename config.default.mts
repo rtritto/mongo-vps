@@ -58,9 +58,6 @@ const getMongoDB = () => {
       // ssl: connect to the server using secure SSL
       ssl: getBoolean(process.env.ME_CONFIG_MONGODB_SSL, mongo.ssl),
 
-      // sslValidate: validate mongod server certificate against CA
-      sslValidate: getBoolean(process.env.ME_CONFIG_MONGODB_SSLVALIDATE, true),
-
       // sslCA: single PEM file on disk
       sslCA: process.env.ME_CONFIG_MONGODB_CA_FILE,
 

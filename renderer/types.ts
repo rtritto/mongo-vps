@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js'
-import type { PageContextBuiltIn } from 'vite-plugin-ssr/types'
+import type { PageContextBuiltIn } from 'vike/types'
 
 export type PageProps = {
   dbName?: string

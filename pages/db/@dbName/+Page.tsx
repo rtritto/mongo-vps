@@ -11,7 +11,7 @@ const Page: Component<{
       {props.dbName}
 
       <p>
-        Demo using <code>vite-plugin-ssr</code> with Solid.
+        Demo using <code>vike</code> with Solid.
       </p>
     </>
   )

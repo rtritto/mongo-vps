@@ -1,4 +1,4 @@
-// https://vite-plugin-ssr.com/error-page
+// https://vike.dev/error-page
 
 import { type Component, Show } from 'solid-js'
 

@@ -1,4 +1,4 @@
-// https://vite-plugin-ssr.com/data-fetching
+// https://vike.dev/data-fetching
 
 async function onBeforeRender(pageContext) {
   return {

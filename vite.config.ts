@@ -1,9 +1,9 @@
 import suid from '@suid/vite-plugin'
 import { defineConfig, loadEnv } from 'vite'
 // https://vite-pwa-org.netlify.app/guide
-// import { VitePWA } from 'vite-plugin-pwa'
+// import { VitePWA } from 'vike-pwa'
 import solid from 'vite-plugin-solid'
-import ssr from 'vite-plugin-ssr/plugin'
+import ssr from 'vike/plugin'
 
 import getGlobalConfig from './config.default.mts'
 import getMongo from './utils/middlewares/db.mts'
