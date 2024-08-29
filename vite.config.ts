@@ -17,7 +17,11 @@ export default defineConfig(async ({ mode }) => {
   await global.mongo.connect(global.config)
 
   return {
-    cacheDir: '.cache/.vite',
+    cacheDir: '.vite',
+    build: {
+      target: 'esnext',
+      outDir: '.vite/dist'
+    },
     envPrefix: 'ME_CONFIG_',
     plugins: [
       // VitePWA({ registerType: 'autoUpdate' }),

@@ -9,8 +9,5 @@
 !.yarn/sdks
 !.yarn/versions
 
-# build output
-.dist
-
-# cache
-.cache
+# vite
+.vite
