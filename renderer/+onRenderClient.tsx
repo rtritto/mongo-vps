@@ -2,12 +2,9 @@
 
 import { createStore, reconcile } from 'solid-js/store'
 import { hydrate, render } from 'solid-js/web'
-import type { PageContextBuiltInClientWithClientRouting as PageContextBuiltInClient } from 'vike/types'
+import type { PageContextClient } from 'vike/types'
 
 import { PageLayout } from './PageLayout'
-import type { PageContext } from './types'
-
-type PageContextClient = PageContextBuiltInClient & PageContext
 
 let dispose: () => void
 let rendered = false

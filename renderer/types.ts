@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js'
-import type { PageContextBuiltIn } from 'vike/types'
+import type { PageContextServer } from 'vike/types'
 
 export type PageProps = {
   dbName?: string
@@ -9,7 +9,7 @@ export type PageProps = {
 
 type Page = Component<PageProps>
 
-export type PageContext = PageContextBuiltIn<Page> & {
+export type PageContext = PageContextServer<Page> & {
   pageProps: PageProps
   config: {
     title: string
