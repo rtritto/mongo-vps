@@ -15,29 +15,29 @@
     "od": "yarn outdated"
   },
   "dependencies": {
-    "@suid/material": "^0.17.0",
-    "@suid/vite-plugin": "^0.3.0",
+    "@suid/material": "^0.18.0",
+    "@suid/vite-plugin": "^0.3.1",
     "bson": "^6.8.0",
-    "jotai": "^2.9.3",
-    "mongodb": "^6.8.0",
-    "mongodb-query-parser": "^4.2.4",
-    "solid-jotai": "^0.2.2",
-    "solid-js": "^1.8.22",
-    "vike": "^0.4.193",
-    "vite": "^5.4.2",
-    "vite-plugin-pwa": "^0.20.2",
+    "jotai": "^2.10.0",
+    "mongodb": "^6.9.0",
+    "mongodb-query-parser": "^4.2.5",
+    "solid-jotai": "^0.3.0",
+    "solid-js": "^1.9.1",
+    "vike": "^0.4.197",
+    "vite": "^5.4.8",
+    "vite-plugin-pwa": "^0.20.5",
     "vite-plugin-solid": "^2.10.2"
   },
   "devDependencies": {
-    "@types/eslint": "^8.56.10",
-    "@types/node": "^22.5.2",
-    "@typescript-eslint/eslint-plugin": "^8.3.0",
-    "@typescript-eslint/parser": "^8.3.0",
+    "@types/eslint": "^8.56.12",
+    "@types/node": "^22.7.1",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
     "@yarnpkg/sdks": "^3.2.0",
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "eslint-plugin-solid": "^0.14.3",
     "eslint-plugin-unicorn": "^55.0.0",
     "part-regex": "^0.1.2",
-    "typescript": "^5.5.4"
+    "typescript": "5.5.4"
   }
 }
